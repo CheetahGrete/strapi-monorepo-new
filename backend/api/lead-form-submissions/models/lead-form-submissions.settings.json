@@ -11,16 +11,15 @@
     "draftAndPublish": true
   },
   "attributes": {
+    "name": {
+      "type": "string"
+    },
     "email": {
       "type": "string"
     },
     "status": {
       "type": "enumeration",
-      "enum": [
-        "seen",
-        "contacted",
-        "ignored"
-      ]
+      "enum": ["seen", "contacted", "ignored"]
     },
     "location": {
       "type": "string"
@@ -29,6 +28,9 @@
       "type": "richtext"
     },
     "subject": {
+      "type": "string"
+    },
+    "tel": {
       "type": "string"
     }
   }
