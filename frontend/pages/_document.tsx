@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
         <Head>
           <script
             id="usercentrics-cmp"
-            data-settings-id={process.env.USERCENTRICS_SETTINGS_ID}
+            data-settings-id={process.env.NEXT_PUBLIC_USERCENTRICS_SETTINGS_ID}
             src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
             async
           ></script>
@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer', ${process.env.GTM_ID});
+              })(window,document,'script','dataLayer', ${process.env.NEXT_PUBLIC_GTM_ID});
               `,
             }}
           />
@@ -43,7 +43,7 @@ export default class MyDocument extends Document {
         <body>
           <noscript>
             <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${process.env.GTM_ID}`}
+              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
               height="0"
               width="0"
               style={{ display: "none", visibility: "hidden" }}
