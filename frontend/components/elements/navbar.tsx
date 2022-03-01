@@ -8,9 +8,23 @@ import { getButtonAppearance } from "utils/button"
 import MobileNavMenu from "./mobile-nav-menu"
 import ButtonLink from "./button-link"
 import NextImage from "./image"
-import CustomLink from "./custom-link"
 import LocaleSwitch from "../locale-switch"
-import classNames from "classnames"
+
+function MyLink(props) {
+  let { href, children, ...rest } = props
+  return (
+    <Link href={href}>
+      <a
+        className={
+          "block w-full px-4 py-2 text-sm hover:bg-gray-700 hover:text-gray-300 active:bg-gray-100 active:text-gray-900"
+        }
+        {...rest}
+      >
+        {children}
+      </a>
+    </Link>
+  )
+}
 
 interface INavbar {
   navbar: {
@@ -113,22 +127,11 @@ const Navbar = ({ navbar, pageContext }: INavbar) => {
                           <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <div className="py-1">
                               {menuLink.links.map((item) => (
-                                <Link key={item.id} href={item.url} passHref>
-                                  <Menu.Item>
-                                    {({ active }) => (
-                                      <a
-                                        className={classNames(
-                                          active
-                                            ? "bg-gray-100 text-gray-900"
-                                            : "text-gray-700",
-                                          "block px-4 py-2 text-sm hover:bg-gray-900 hover:text-gray-100"
-                                        )}
-                                      >
-                                        {item.text}
-                                      </a>
-                                    )}
-                                  </Menu.Item>
-                                </Link>
+                                <Menu.Item key={item.id}>
+                                  {({ active }) => (
+                                    <MyLink href={item.url}>{item.text}</MyLink>
+                                  )}
+                                </Menu.Item>
                               ))}
                             </div>
                           </Menu.Items>

@@ -27,10 +27,12 @@
       "type": "text"
     },
     "authorName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "authorTitle": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "link": {
       "type": "component",
