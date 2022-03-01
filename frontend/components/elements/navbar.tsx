@@ -13,16 +13,18 @@ import LocaleSwitch from "../locale-switch"
 function MyLink(props) {
   let { href, children, ...rest } = props
   return (
-    <Link href={href}>
-      <a
-        className={
-          "block w-full px-4 py-2 text-sm hover:bg-gray-700 hover:text-gray-300 active:bg-gray-100 active:text-gray-900"
-        }
-        {...rest}
-      >
-        {children}
-      </a>
-    </Link>
+    <div className="relative w-full">
+      <Link href={href}>
+        <a
+          className={
+            "z-50 block w-full px-4 py-2 text-sm hover:bg-gray-700 hover:text-gray-300 active:bg-gray-100 active:text-gray-900"
+          }
+          {...rest}
+        >
+          {children}
+        </a>
+      </Link>
+    </div>
   )
 }
 

@@ -6,7 +6,7 @@ import NextImage from "../elements/image"
 const Hero = ({ data }) => {
   return (
     <div className="container flex flex-col items-center justify-between gap-12 py-12 md:flex-row">
-      <div className="mt-6 w-full flex-shrink-0 md:mt-0 md:w-6/12">
+      <div className="z-0 mt-6 w-full flex-shrink-0 md:mt-0 md:w-6/12">
         <NextImage media={data.picture} className="" />
       </div>
 
