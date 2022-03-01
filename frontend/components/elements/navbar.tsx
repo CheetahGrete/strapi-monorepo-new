@@ -13,11 +13,11 @@ import LocaleSwitch from "../locale-switch"
 function MyLink(props) {
   let { href, children, ...rest } = props
   return (
-    <div className="relative w-full">
+    <div className="w-full">
       <Link href={href}>
         <a
           className={
-            "z-50 block w-full px-4 py-2 text-sm hover:bg-gray-700 hover:text-gray-300 active:bg-gray-100 active:text-gray-900"
+            "block w-full px-4 py-2 text-sm hover:bg-gray-700 hover:text-gray-300 active:bg-gray-100 active:text-gray-900"
           }
           {...rest}
         >
@@ -127,7 +127,7 @@ const Navbar = ({ navbar, pageContext }: INavbar) => {
                           leaveTo="transform opacity-0 scale-95"
                         >
                           <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                            <div className="py-1">
+                            <div className="relative z-50 py-1">
                               {menuLink.links.map((item) => (
                                 <Menu.Item key={item.id}>
                                   {({ active }) => (
