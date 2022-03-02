@@ -112,7 +112,7 @@ const TestimonialsGroup: FC<Props> = ({ data }) => {
                     </div>
                   </div>
                   <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
-                    <div className="text-base font-medium text-gray-900">
+                    <div className="relative pt-12 text-base font-medium text-gray-900 md:mt-0 ">
                       {selectedTestimonial.authorName}
                     </div>
 
