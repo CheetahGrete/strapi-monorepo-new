@@ -1,51 +1,32 @@
 import classNames from "classnames"
 import { FC, useState } from "react"
 import NextImage from "../elements/image"
-import CustomLink from "../elements/custom-link"
 import CustomImage from "../elements/custom-image"
+import { TestimonialsProps } from "interfaces/testimonial"
+import CustomLink from "../elements/custom-link"
 
-interface Testimonial {
-  id: number
-  text: string
-  authorName: string
-  authorTitle?: any
-  link?: ILink
-  logo: IMedia
-  picture: IMedia
-}
-
-interface Props {
-  data: {
-    __component: string
-    id: number
-    title: string
-    description: string
-    link: ILink
-    logos: any[]
-    testimonials: Testimonial[]
-  }
-}
-
-const TestimonialsGroup: FC<Props> = ({ data }) => {
+const TestimonialsGroup: FC<TestimonialsProps> = ({ data }) => {
   // Only show one testimonial at a time
   const [selectedTestimonialIndex, setSelectedTestimonialIndex] = useState(0)
   const selectedTestimonial = data.testimonials[selectedTestimonialIndex]
   return (
     <>
       <section className="overflow-hidden bg-gray-50 py-12 md:py-20 lg:py-24">
-        <div className="mx-auto px-4 pb-4 sm:px-6 lg:py-8 lg:px-8">
-          <div className="text-center">
-            {/* <h2 className="text-base font-semibold uppercase tracking-wide text-primary-600">
+        <CustomLink link={data.link}>
+          <div className="mx-auto px-4 pb-4 sm:px-6 lg:py-8 lg:px-8">
+            <div className="text-center">
+              {/* <h2 className="text-base font-semibold uppercase tracking-wide text-primary-600">
             Pricing
           </h2> */}
-            <p className="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
-              {data.title}
-            </p>
-            <p className="mx-auto mt-5 max-w-xl text-xl text-gray-500">
-              {data.description}
-            </p>
+              <p className="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+                {data.title}
+              </p>
+              <p className="mx-auto mt-5 max-w-xl text-xl text-gray-500">
+                {data.description}
+              </p>
+            </div>
           </div>
-        </div>
+        </CustomLink>
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <svg
             className="absolute top-full right-full translate-x-1/3 -translate-y-1/4 transform lg:translate-x-1/2 xl:-translate-y-1/2"
@@ -101,34 +82,36 @@ const TestimonialsGroup: FC<Props> = ({ data }) => {
                 <p>&ldquo;{selectedTestimonial.text}&rdquo;</p>
               </div>
               <footer className="mt-8">
-                <div className="md:flex md:items-center md:justify-center">
-                  <div className="md:flex-shrink-0">
-                    <div className="mx-auto h-32 w-32 rounded-full">
-                      <CustomImage
-                        layout="responsive"
-                        className="rounded-full"
-                        media={selectedTestimonial.picture}
-                      />
+                <CustomLink link={selectedTestimonial.link}>
+                  <div className="md:flex md:items-center md:justify-center">
+                    <div className="md:flex-shrink-0">
+                      <div className="mx-auto h-32 w-32 rounded-full">
+                        <CustomImage
+                          layout="responsive"
+                          className="rounded-full"
+                          media={selectedTestimonial.picture}
+                        />
+                      </div>
+                    </div>
+                    <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
+                      <div className="relative pt-12 text-base font-medium text-gray-900 md:mt-0 md:pt-0 ">
+                        {selectedTestimonial.authorName}
+                      </div>
+
+                      <svg
+                        className="mx-1 hidden h-5 w-5 text-primary-600 md:block"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M11 0h3L9 20H6l5-20z" />
+                      </svg>
+
+                      <div className="text-base font-medium text-gray-500">
+                        {selectedTestimonial.authorTitle}
+                      </div>
                     </div>
                   </div>
-                  <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
-                    <div className="relative pt-12 text-base font-medium text-gray-900 md:mt-0 ">
-                      {selectedTestimonial.authorName}
-                    </div>
-
-                    <svg
-                      className="mx-1 hidden h-5 w-5 text-primary-600 md:block"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M11 0h3L9 20H6l5-20z" />
-                    </svg>
-
-                    <div className="text-base font-medium text-gray-500">
-                      {selectedTestimonial.authorTitle}
-                    </div>
-                  </div>
-                </div>
+                </CustomLink>
               </footer>
               {data.testimonials.length > 1 && (
                 <div className="mt-10 flex flex-row justify-center gap-4">

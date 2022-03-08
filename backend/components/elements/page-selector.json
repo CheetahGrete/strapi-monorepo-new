@@ -7,11 +7,6 @@
   },
   "options": {},
   "attributes": {
-    "label": {
-      "type": "string",
-      "required": true,
-      "unique": false
-    },
     "dynamic_rich_text": {
       "model": "dynamic-rich-text"
     }

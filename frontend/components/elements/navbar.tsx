@@ -9,6 +9,7 @@ import MobileNavMenu from "./mobile-nav-menu"
 import ButtonLink from "./button-link"
 import NextImage from "./image"
 import LocaleSwitch from "../locale-switch"
+import { INavbar } from "interfaces/navbar"
 
 function MyLink(props) {
   let { href, children, ...rest } = props
@@ -17,7 +18,7 @@ function MyLink(props) {
       <Link href={href}>
         <a
           className={
-            "block w-full px-4 py-2 text-sm hover:bg-gray-700 hover:text-gray-300 active:bg-gray-100 active:text-gray-900"
+            "block w-full bg-white px-4 py-2 text-sm hover:bg-gray-700 hover:text-gray-300 active:bg-gray-100 active:text-gray-900"
           }
           {...rest}
         >
@@ -26,48 +27,6 @@ function MyLink(props) {
       </Link>
     </div>
   )
-}
-
-interface INavbar {
-  navbar: {
-    id: number
-    links: {
-      id: number
-      url: string
-      title: string
-      text: string
-      newTab: boolean
-      links: {
-        id: number
-        url: string
-        title: string
-        text: string
-        newTab: boolean
-      }[]
-    }[]
-    button: {
-      id: number
-      url: string
-      newTab: boolean
-      text: string
-      type: string
-    }
-    logo: IMedia
-    mobileLogo: IMedia
-  }
-  pageContext: {
-    locale: string
-    locales: string[]
-    defaultLocale: string
-    slug: string
-    localizations: []
-    localizedPaths: [
-      {
-        locale: string
-        href: string
-      }
-    ]
-  }
 }
 
 const Navbar = ({ navbar, pageContext }: INavbar) => {
