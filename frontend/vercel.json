@@ -1,5 +1,9 @@
 {
-    "github": {
-      "silent": true
-    }
+  "github": {
+    "silent": true
+  },
+  "functions": {
+    "memory": 3008,
+    "maxDuration": 60
   }
+}
