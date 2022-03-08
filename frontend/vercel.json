@@ -3,7 +3,7 @@
     "silent": true
   },
   "functions": {
-    "pages/sitemap.xml.js": {
+    "*": {
       "memory": 3008,
       "maxDuration": 60
     }
