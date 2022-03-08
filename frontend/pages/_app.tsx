@@ -40,8 +40,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       </Head>
       {/* Global site metadata */}
       <DefaultSeo
-        titleTemplate={`%s | ${global.metaTitleSuffix}`}
-        title="Page"
         description={metadata.metaDescription}
         openGraph={{
           url: getStrapiMedia(shareImages.url),
