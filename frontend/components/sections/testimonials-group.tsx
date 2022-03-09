@@ -65,18 +65,15 @@ const TestimonialsGroup: FC<TestimonialsProps> = ({ data }) => {
           </svg>
 
           <div className="relative">
-            {/*  <img
-              className="mx-auto h-8"
-              src="https://tailwindui.com/img/logos/background-logo-primary-600-mark-gray-800-and-primary-600-text.svg"
-              alt="background"
-            /> */}
-            <div className="relative mx-auto h-16 w-16 rounded-full">
-              <CustomImage
-                className="mx-auto"
-                layout="fill"
-                media={selectedTestimonial.logo}
-              />
-            </div>
+            <CustomLink link={selectedTestimonial.link}>
+              <div className="relative mx-auto h-16 w-16 rounded-full">
+                <CustomImage
+                  className="mx-auto"
+                  layout="fill"
+                  media={selectedTestimonial.logo}
+                />
+              </div>
+            </CustomLink>
             <blockquote className="mt-10">
               <div className="mx-auto max-w-3xl text-center text-2xl font-medium leading-9 text-gray-900">
                 <p>&ldquo;{selectedTestimonial.text}&rdquo;</p>

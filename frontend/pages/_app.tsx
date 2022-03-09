@@ -1,7 +1,7 @@
 import App from "next/app"
 import type { AppProps, AppContext } from "next/app"
 import Head from "next/head"
-
+import Script from "next/script"
 import ErrorPage from "next/error"
 import { useRouter } from "next/router"
 import { DefaultSeo } from "next-seo"
@@ -38,6 +38,29 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <link rel="shortcut icon" href={getStrapiMedia(global.favicon.url)} />
         <link rel="prefetch" href="/fonts/inter-var-latin.woff2" />
       </Head>
+
+      <Script
+        id="usercentrics-cmp"
+        data-settings-id={process.env.NEXT_PUBLIC_USERCENTRICS_SETTINGS_ID}
+        src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
+        async
+        strategy="beforeInteractive"
+      />
+      <Script
+        id="Google Tag Manager"
+        data-usercentrics="Google Tag Manager"
+        type="text/plain"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer', '${process.env.NEXT_PUBLIC_GTM_ID}');
+          `,
+        }}
+      />
       {/* Global site metadata */}
       <DefaultSeo
         description={metadata.metaDescription}

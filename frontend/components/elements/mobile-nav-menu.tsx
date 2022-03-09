@@ -42,8 +42,7 @@ const MobileNavMenu = ({ navbar, closeSelf }: MobileNavMenuProps) => {
     <div className="fixed top-0 left-0 z-10 h-screen w-screen overflow-y-scroll bg-white pb-6">
       <div className="container flex flex-col justify-between">
         {/* Top section */}
-        <div className="grid grid-flow-row grid-cols-3 items-center justify-between">
-          <div></div>
+        <div className="grid grid-flow-row grid-cols-2 items-center justify-between">
           {navbar.logo ? (
             <CustomImage
               media={navbar?.logo}
@@ -60,7 +59,7 @@ const MobileNavMenu = ({ navbar, closeSelf }: MobileNavMenuProps) => {
             />
           )}
           {/* Close button */}
-          <div className="mr-1 block justify-self-end p-1">
+          <div className="mr-4 block justify-self-end p-1">
             <button onClick={closeSelf} className="py-1 px-1">
               <div className="h-8 w-auto">
                 <svg

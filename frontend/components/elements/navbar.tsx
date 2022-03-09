@@ -120,7 +120,7 @@ const Navbar = ({ navbar, pageContext }: INavbar) => {
             {/* Hamburger menu on mobile */}
             <button
               onClick={() => setMobileMenuIsShown(true)}
-              className="block p-1 md:hidden"
+              className="mr-4 block p-1 md:mr-0 md:hidden"
               aria-label="Mobile Navigation"
             >
               <div className="h-8 w-auto">

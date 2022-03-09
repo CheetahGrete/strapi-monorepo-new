@@ -6,14 +6,14 @@ export default class MyDocument extends Document {
     return (
       <Html lang="de">
         <Head>
-          <script
+          {/* <script
             id="usercentrics-cmp"
             data-settings-id={process.env.NEXT_PUBLIC_USERCENTRICS_SETTINGS_ID}
             src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
             async
-          ></script>
+          ></script> */}
 
-          <script
+          {/* <script
             data-usercentrics="Google Tag Manager"
             type="text/plain"
             async
@@ -27,7 +27,7 @@ export default class MyDocument extends Document {
               })(window,document,'script','dataLayer', '${process.env.NEXT_PUBLIC_GTM_ID}');
               `,
             }}
-          />
+          /> */}
           <link rel="preload" href="/fonts/inter-var-latin.woff2"></link>
 
           <link rel="preload" href="/fonts/fira/FiraSans-Bold.woff" />
