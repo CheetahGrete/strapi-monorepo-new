@@ -97,6 +97,7 @@ function DynamicRichText({ data }: Props): ReactElement {
 
   useEffect(() => {
     prefetchDynamicContent()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (dynamicData)
@@ -110,8 +111,11 @@ function DynamicRichText({ data }: Props): ReactElement {
           <div className="px-4 py-5 sm:px-6">
             <MarkdownRender>{data.content}</MarkdownRender>
           </div>
-          <div className="px-4 py-5 sm:p-6">
-            <div className="mx-auto max-w-xs" onClick={() => setDyHide(false)}>
+          <div className="relative px-4 py-5 sm:p-6">
+            <div
+              className="mx-auto max-w-prose"
+              onClick={() => setDyHide(false)}
+            >
               <Listbox value={selected} onChange={setSelected}>
                 {({ open }) => (
                   <>
@@ -192,12 +196,9 @@ function DynamicRichText({ data }: Props): ReactElement {
                 )}
               </Listbox>
             </div>
-            <div className="px-4 sm:px-6 lg:px-8">
-              <div className="mx-auto">
-                <div className="my-8 p-3">
-                  <MarkdownRender>{dynamicData.content}</MarkdownRender>
-                </div>
-              </div>
+
+            <div className="my-2 mx-auto min-h-min py-14 lg:px-8">
+              <MarkdownRender>{dynamicData.content}</MarkdownRender>
             </div>
           </div>
         </div>
