@@ -13,9 +13,9 @@ import toast, { Toaster } from "react-hot-toast"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
-  const queryClient = new QueryClient()
+export const queryClient = new QueryClient()
 
+const MyApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter()
 
   if (router.asPath === "/[[...slug]]") {

@@ -7,6 +7,7 @@ import MarkdownRender from "utils/MarkdownRender"
 import { getDynamicRT } from "utils/api"
 import { useRouter } from "next/router"
 import slugify from "slugify"
+import { queryClient } from "pages/_app"
 
 interface DynamicRichText {
   id: number
@@ -61,7 +62,7 @@ function DynamicRichText({ data }: Props): ReactElement {
     status,
     data: dynamicData,
     error,
-  } = useQuery(["pageData", selected.slug], async () =>
+  } = useQuery(["dynRichText", selected.slug], async () =>
     getDynamicRT(selected.slug)
   )
 
@@ -85,12 +86,26 @@ function DynamicRichText({ data }: Props): ReactElement {
     }
   }, [router.query.dyn])
 
+  const prefetchDynamicContent = async () => {
+    data.RichTextSelektor.map(async (item) => {
+      await queryClient.prefetchQuery(
+        ["dynRichText", item.dynamic_rich_text.slug],
+        async () => getDynamicRT(item.dynamic_rich_text.slug)
+      )
+    })
+  }
+
+  useEffect(() => {
+    prefetchDynamicContent()
+  }, [])
+
   if (dynamicData)
     return (
       <div className="mx-auto my-4 w-full max-w-prose px-4 sm:my-8 sm:px-8 md:max-w-3xl">
         {/* <button className="m-2 bg-primary-500 text-white" onClick={handleChange}>
         Test DataLayer
       </button> */}
+
         <div className="divide-y divide-primary-300 overflow-hidden rounded-lg bg-white shadow shadow-primary-500/75">
           <div className="px-4 py-5 sm:px-6">
             <MarkdownRender>{data.content}</MarkdownRender>
