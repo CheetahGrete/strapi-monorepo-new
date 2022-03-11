@@ -8,24 +8,28 @@ import { getDynamicRT } from "utils/api"
 import { useRouter } from "next/router"
 import slugify from "slugify"
 
-type Props = {
+interface DynamicRichText {
+  id: number
+  shortName: string
+  slug: string
+  content: string
+  published_at: Date
+  created_at: Date
+  updated_at: Date
+}
+
+interface RichTextSelektor {
+  id: number
+  label?: any
+  dynamic_rich_text: DynamicRichText
+}
+
+interface Props {
   data: {
     __component: string
     id: number
     content: string
-    RichTextSelektor: {
-      id: number
-      label: string
-      dynamic_rich_text: {
-        id: number
-        shortName: string
-        content: string
-        slug: string
-        published_at: string
-        created_at: string
-        updated_at: string
-      }
-    }[]
+    RichTextSelektor: RichTextSelektor[]
   }
 }
 
@@ -83,12 +87,11 @@ function DynamicRichText({ data }: Props): ReactElement {
 
   if (dynamicData)
     return (
-      <div className="container py-16 px-4 lg:px-8 lg:py-24">
+      <div className="mx-auto my-4 w-full max-w-prose px-4 sm:my-8 sm:px-8 md:max-w-3xl">
         {/* <button className="m-2 bg-primary-500 text-white" onClick={handleChange}>
         Test DataLayer
       </button> */}
-
-        <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
+        <div className="divide-y divide-primary-300 overflow-hidden rounded-lg bg-white shadow shadow-primary-500/75">
           <div className="px-4 py-5 sm:px-6">
             <MarkdownRender>{data.content}</MarkdownRender>
           </div>
@@ -174,8 +177,8 @@ function DynamicRichText({ data }: Props): ReactElement {
                 )}
               </Listbox>
             </div>
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="mx-auto max-w-3xl">
+            <div className="px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto">
                 <div className="my-8 p-3">
                   <MarkdownRender>{dynamicData.content}</MarkdownRender>
                 </div>
