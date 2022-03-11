@@ -173,12 +173,9 @@ const MarkdownRender = (props) => {
   return (
     <div>
       <ReactMarkdown
-        className={classNames(
-          "prose prose-lg mx-auto prose-headings:underline prose-a:text-primary-600 md:prose-lg lg:prose-2xl",
-          {
-            "prose mx-auto max-w-none text-center": props?.center,
-          }
-        )}
+        className={
+          "prose prose-lg mx-auto prose-headings:underline prose-a:text-primary-600 md:prose-lg lg:prose-2xl"
+        }
         skipHtml={true}
         components={customRender}
       >

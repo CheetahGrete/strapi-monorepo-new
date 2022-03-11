@@ -90,10 +90,8 @@ const SingleCard = ({
                   <p className="text-md bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-left font-bold text-transparent">
                     {category}
                   </p>
-                  <div className="mt-2 hidden lg:block">
-                    <div>
-                      <MarkdownRender>{text}</MarkdownRender>
-                    </div>
+                  <div className="justify-left mt-2 flex">
+                    <MarkdownRender>{text}</MarkdownRender>
                   </div>
                 </div>
               </div>
@@ -122,7 +120,7 @@ function GradientHero({ data }: GradientHero): ReactElement {
             </div>
             <div className="relative mx-auto max-w-7xl">
               <div className="pt-8 text-center">
-                <MarkdownRender center={true}>{data.content}</MarkdownRender>
+                <MarkdownRender>{data.content}</MarkdownRender>
               </div>
 
               <div className="mx-auto mt-12 grid max-w-lg grid-cols-1 gap-3 lg:max-w-none lg:grid-cols-1">
