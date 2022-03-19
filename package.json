@@ -1,7 +1,7 @@
 {
   "name": "strapi-monorepo",
   "private": true,
-  "version": "0.3.4",
+  "version": "0.3.8",
   "scripts": {
     "predev": "docker-compose up -d --build",
     "develop:backend": "yarn --cwd backend develop",
