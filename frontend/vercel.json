@@ -2,22 +2,4 @@
   "github": {
     "silent": true
   },
-  "functions": {
-    "pages/*.ts": {
-      "memory": 3008,
-      "maxDuration": 60
-    },
-    "pages/*.tsx": {
-      "memory": 3008,
-      "maxDuration": 60
-    },
-    "pages/*.js": {
-      "memory": 3008,
-      "maxDuration": 60
-    },
-    "pages/api/*.ts": {
-      "memory": 3008,
-      "maxDuration": 60
-    }
-  }
 }
