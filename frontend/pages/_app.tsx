@@ -12,11 +12,35 @@ import "@/styles/index.css"
 import toast, { Toaster } from "react-hot-toast"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
-import PlausibleProvider from "next-plausible"
+import PlausibleProvider, { usePlausible } from "next-plausible"
+import { useHasNewDeploy } from "next-deploy-notifications"
 
 export const queryClient = new QueryClient()
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  const plausible = usePlausible()
+  let { hasNewDeploy } = useHasNewDeploy()
+
+  if (hasNewDeploy) {
+    toast.loading(
+      <>
+        <span>New Version available!</span>
+        <button
+          className="flex w-full items-center justify-center rounded-none rounded-r-lg border border-transparent p-4 text-sm font-medium text-primary-600 hover:text-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+          onClick={() => {
+            plausible("loaded-new-version")
+            window.location.reload()
+          }}
+        >
+          Refresh
+        </button>
+      </>
+    ),
+      {
+        id: "new-version",
+      }
+  }
+
   const router = useRouter()
 
   if (router.asPath === "/[[...slug]]") {
