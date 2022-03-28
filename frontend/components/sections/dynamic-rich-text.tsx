@@ -8,6 +8,7 @@ import { getDynamicRT } from "utils/api"
 import { useRouter } from "next/router"
 import slugify from "slugify"
 import { queryClient } from "pages/_app"
+import { usePlausible } from "next-plausible"
 
 interface DynamicRichText {
   id: number
@@ -36,7 +37,7 @@ interface Props {
 
 function DynamicRichText({ data }: Props): ReactElement {
   //
-
+  const plausible = usePlausible()
   const router = useRouter()
   const [selected, setSelected] = useState({
     slug: data?.RichTextSelektor[0].dynamic_rich_text?.slug,
@@ -83,7 +84,16 @@ function DynamicRichText({ data }: Props): ReactElement {
       })
       //@ts-ignore
       setSelected({ slug, shortName })
+      try {
+        plausible("dynamic-content", {
+          props: { slug: slug },
+        })
+        console.log("Added Event to plausible")
+      } catch (error) {
+        console.error("Error adding event to plausible", error)
+      }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query.dyn])
 
   const prefetchDynamicContent = async () => {
