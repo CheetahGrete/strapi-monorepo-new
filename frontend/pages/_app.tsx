@@ -24,7 +24,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   if (hasNewDeploy) {
     toast.loading(
       <>
-        <span>New Version available!</span>
+        <span>Neue Version verfügbar!</span>
         <button
           className="flex w-full items-center justify-center rounded-none rounded-r-lg border border-transparent p-4 text-sm font-medium text-primary-600 hover:text-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
           onClick={() => {
@@ -32,7 +32,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             window.location.reload()
           }}
         >
-          Refresh
+          Neu laden
         </button>
       </>
     ),
