@@ -57,7 +57,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         type="text/javascript"
       />
 
-      <Script
+      {/* <Script
         id="Google Tag Manager"
         data-usercentrics="Google Tag Manager"
         type="text/plain"
@@ -71,7 +71,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             })(window,document,'script','dataLayer', '${process.env.NEXT_PUBLIC_GTM_ID}');
           `,
         }}
-      />
+      /> */}
       {/* Global site metadata */}
       <DefaultSeo
         description={metadata.metaDescription}
