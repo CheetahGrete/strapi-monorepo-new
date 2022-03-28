@@ -12,6 +12,7 @@ import "@/styles/index.css"
 import toast, { Toaster } from "react-hot-toast"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
+import PlausibleProvider from "next-plausible"
 
 export const queryClient = new QueryClient()
 
@@ -39,13 +40,23 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <link rel="prefetch" href="/fonts/inter-var-latin.woff2" />
       </Head>
 
-      <Script
+      {/* <Script
         id="usercentrics-cmp"
         data-settings-id={process.env.NEXT_PUBLIC_USERCENTRICS_SETTINGS_ID}
         src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
         async
         strategy="beforeInteractive"
+      /> */}
+
+      <Script
+        id="Cookiebot"
+        src="https://consent.cookiebot.com/uc.js"
+        data-cbid="9c0562ed-14b3-46ba-9616-8d74e5f3e1f7"
+        data-blockingmode="auto"
+        strategy="afterInteractive"
+        type="text/javascript"
       />
+
       <Script
         id="Google Tag Manager"
         data-usercentrics="Google Tag Manager"
@@ -82,12 +93,14 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       />
       {/* Display the content */}
 
-      <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
-        <ReactQueryDevtools initialIsOpen={false} />
+      <PlausibleProvider domain={process.env.NEXT_PUBLIC_FRONTEND_DOMAIN}>
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+          <ReactQueryDevtools initialIsOpen={false} />
 
-        <Toaster />
-      </QueryClientProvider>
+          <Toaster />
+        </QueryClientProvider>
+      </PlausibleProvider>
     </>
   )
 }

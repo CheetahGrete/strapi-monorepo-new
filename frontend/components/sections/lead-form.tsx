@@ -4,6 +4,7 @@ import * as yup from "yup"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import toast from "react-hot-toast"
 import slugify from "slugify"
+import { usePlausible } from "next-plausible"
 
 const CheckboxComponent = ({ data }) => {
   if (data.length > 0)
@@ -37,6 +38,8 @@ const CheckboxComponent = ({ data }) => {
 
 const LeadForm = ({ data }) => {
   const [loading, setLoading] = useState(false)
+
+  const plausible = usePlausible()
 
   const LeadSchema = yup.object().shape({
     name: yup.string().optional(),
@@ -89,6 +92,7 @@ const LeadForm = ({ data }) => {
 
                 toast.success("Vielen Dank für Ihre Nachricht!")
                 window.dataLayer.push({ event: "form-sent" })
+                plausible("form-sent")
               } catch (err) {
                 setErrors({})
                 window.dataLayer.push({
@@ -99,7 +103,6 @@ const LeadForm = ({ data }) => {
 
               setLoading(false)
               setSubmitting(false)
-              toast.success("Nachricht gesendet")
             }}
           >
             {({ errors, touched, isSubmitting }) => (
