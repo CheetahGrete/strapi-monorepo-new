@@ -93,7 +93,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       />
       {/* Display the content */}
 
-      <PlausibleProvider domain={process.env.NEXT_PUBLIC_FRONTEND_DOMAIN}>
+      <PlausibleProvider domain="beammeup.today">
         <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
           <ReactQueryDevtools initialIsOpen={false} />
