@@ -62,6 +62,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <Head>
         <link rel="shortcut icon" href={getStrapiMedia(global.favicon.url)} />
         <link rel="prefetch" href="/fonts/inter-var-latin.woff2" />
+        <meta name="google-site-verification" content="google06ca0fd4c3b66520" />
       </Head>
 
       {/* <Script
