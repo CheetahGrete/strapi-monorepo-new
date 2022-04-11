@@ -64,7 +64,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <link rel="prefetch" href="/fonts/inter-var-latin.woff2" />
         <meta
           name="google-site-verification"
-          content="google06ca0fd4c3b66520"
+          content="U9xbjThB_tHh6i2IvLEb8A8N0FRq7DJYLk5joMER0LE"
         />
       </Head>
 
